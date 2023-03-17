@@ -1,0 +1,5 @@
+rondaId,rondaNro,partidoId,equipo1Id,equipo1Nombre,equipo1Descripcion,equipo1Goles,equipo2Id,equipo2Nombre,equipo2Descripcion,equipo2Goles
+1,1,1,1,Argentina,Seleccionado,1,2,Arabia Saudita,Seleccionado,2
+1,1,2,3,Polonia,Seleccionado,0,4,México,Seleccionado,0
+1,1,3,1,Argentina,Seleccionado,2,4,México,Seleccionado,0
+1,1,4,2,Arabia Saudita,Seleccionado,0,3,Polonia,Seleccionado,2
