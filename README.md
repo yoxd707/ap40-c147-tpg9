@@ -68,4 +68,5 @@ TODO: Agregar como se debe utilizar el programa.
 - [Java](https://www.java.com/) - Java 17
 - [Maven](https://maven.apache.org/) - Apache Maven 3.9
 - [Opencsv](https://opencsv.sourceforge.net/) - Opencsv 5.7.1
+- [Lombok](https://projectlombok.org/) - Lombok 1.18.26
 - [JUnit](https://junit.org/junit5/) - JUnit Jupiter 5.5.2
