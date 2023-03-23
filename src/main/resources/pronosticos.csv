@@ -1,5 +1,9 @@
-partidoId,gana1,empata,gana2
-1,X,,
-2,,X,
-3,X,,
-4,,,X
+participante,partidoId,gana1,empata,gana2
+Mariana,1,X,,
+Mariana,2,,X,
+Mariana,3,X,,
+Mariana,4,,,X
+Pedro,1,,X,
+Pedro,2,,,X
+Pedro,3,,X,
+Pedro,4,X,,
