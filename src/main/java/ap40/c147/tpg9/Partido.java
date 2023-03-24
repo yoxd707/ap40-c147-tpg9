@@ -1,16 +1,26 @@
 package ap40.c147.tpg9;
 
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.ToString;
+
 /** Clase {@code Partido} que representa un partido.
  * @author Castaño Ulises.
  * @author ulises27.000@gmail.com
  */
+@ToString
 public class Partido {
 
-    private int id;
-    private Equipo equipo1;
-    private Equipo equipo2;
-    private int golesEquipo1;
-    private int golesEquipo2;
+    /** Identificador único del partido. */
+    @Getter private int id;
+    /** Equipo 1 */
+    @Getter private Equipo equipo1;
+    /** Equipo 2 */
+    @Getter private Equipo equipo2;
+    /** Cantidad de goles realizados por el equipo 1 */
+    @Getter private int golesEquipo1;
+    /** Cantidad de goles realizados por el equipo 2 */
+    @Getter private int golesEquipo2;
 
 
     /** Crea una instancia de la clase {@code Partido} con los datos especificados.
@@ -19,18 +29,15 @@ public class Partido {
      * @param equipo2 Instancia de la clase {@code Equipo} para el segundo equipo del partido.
      * @param golesEquipo1 Cantidad de goles del equipo 1.
      * @param golesEquipo2 Cantidad de goles del equipo 2.
+     * @throws NullPointerException Se devolverá si {@code equipo1} o {@code equipo2} son nulos.
      * @throws IllegalArgumentException Se devolverá en los siguientes casos:
      *          <ul>
-     *          <li>Si {@code equipo1} o {@code equipo2} son nulos.
      *          <li>Si {@code equipo1} y {@code equipo2} son iguales o la misma instancia.
      *          <li>Si {@code golesEquipo1} o {@code golesEquipo2} son menores a cero.
      *          </ul>
      * @see Equipo
      */
-    public Partido(int id, Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2) throws IllegalArgumentException {
-        if (equipo1 == null || equipo2 == null)
-            throw new IllegalArgumentException("Los parámetros equipo1 y equipo2 no pueden ser nulos.");
-
+    public Partido(int id, @NonNull Equipo equipo1, @NonNull Equipo equipo2, int golesEquipo1, int golesEquipo2) throws IllegalArgumentException, NullPointerException {
         if (equipo1.equals(equipo2))
             throw new IllegalArgumentException("Los parámetros equipo1 y equipo2 no pueden ser iguales o la misma instancia.");
 
@@ -42,44 +49,6 @@ public class Partido {
         this.equipo2 = equipo2;
         this.golesEquipo1 = golesEquipo1;
         this.golesEquipo2 = golesEquipo2;
-    }
-
-
-    /**
-     * @return Devuelve el identificador único del partido.
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @return Devuelve el equipo1 del partido.
-     * @see Equipo
-     */
-    public Equipo getEquipo1() {
-        return equipo1;
-    }
-
-    /**
-     * @return Devuelve el equipo2 del partido.
-     * @see Equipo
-     */
-    public Equipo getEquipo2() {
-        return equipo2;
-    }
-
-    /**
-     * @return Devuelve la cantidad de goles del equipo1.
-     */
-    public int getGolesEquipo1() {
-        return golesEquipo1;
-    }
-
-    /**
-     * @return Devuelve la cantidad de goles del equipo2.
-     */
-    public int getGolesEquipo2() {
-        return golesEquipo2;
     }
 
 
@@ -97,12 +66,13 @@ public class Partido {
      * 
      * @param equipo Instancia de la clase {@code Equipo} perteneciente al partido.
      * @return Devuelve un {@code ResultadoEnum} como resultado del equipo.
+     * @throws NullPointerException Se devolverá en caso de que {@code equipo} sea nulo.
      * @throws IllegalArgumentException Se devolverá en caso de que el parámetro {@code equipo} no
      *          sea igual al {@code equipo1} o al {@code equipo2} del partido.
      * @see ResultadoEnum
      * @see Equipo
      */
-    public ResultadoEnum resultado(Equipo equipo) throws IllegalArgumentException {
+    public ResultadoEnum resultado(@NonNull Equipo equipo) throws IllegalArgumentException, NullPointerException {
         boolean esEquipo1 = equipo1.equals(equipo);
         boolean esEquipo2 = equipo2.equals(equipo);
 

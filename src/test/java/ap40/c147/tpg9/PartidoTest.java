@@ -19,7 +19,7 @@ public class PartidoTest {
 
     @Test
     public void constructor_pasandoEquiposIguales_deberiaLanzarExcepcion() {
-        Equipo equipo = new Equipo();
+        var equipo = new Equipo();
         Assertions.assertThrows(
             IllegalArgumentException.class,
             () -> new Partido(1, equipo, equipo, 0, 0)
@@ -29,7 +29,7 @@ public class PartidoTest {
     @Test
     public void constructor_pasandoEquipo1Nulo_deberiaLanzarExcepcion() {
         Assertions.assertThrows(
-            IllegalArgumentException.class,
+            NullPointerException.class,
             () -> new Partido(1, null, new Equipo(), 0, 0)
         );
     }
@@ -37,7 +37,7 @@ public class PartidoTest {
     @Test
     public void constructor_pasandoEquipo2Nulo_deberiaLanzarExcepcion() {
         Assertions.assertThrows(
-            IllegalArgumentException.class,
+            NullPointerException.class,
             () -> new Partido(1, new Equipo(), null, 0, 0)
         );
     }
@@ -60,13 +60,13 @@ public class PartidoTest {
 
     @Test
     public void propiedades_deberianSerCorrectas() {
-        int id = 1;
-        Equipo equipo1 = new Equipo();
-        Equipo equipo2 = new Equipo();
-        int golesEquipo1 = 2;
-        int golesEquipo2 = 3;
+        var id = 1;
+        var equipo1 = new Equipo();
+        var equipo2 = new Equipo();
+        var golesEquipo1 = 2;
+        var golesEquipo2 = 3;
 
-        Partido partido = new Partido(id, equipo1, equipo2, golesEquipo1, golesEquipo2);
+        var partido = new Partido(id, equipo1, equipo2, golesEquipo1, golesEquipo2);
 
         Assertions.assertEquals(id, partido.getId());
         Assertions.assertEquals(equipo1, partido.getEquipo1());
