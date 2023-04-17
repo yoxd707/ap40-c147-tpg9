@@ -1,5 +1,6 @@
 package ap40.c147.tpg9;
 
+import ap40.c147.exceptions.RondaException;
 import java.util.ArrayList;
 import lombok.Getter;
 
@@ -18,18 +19,18 @@ public class Ronda {
     // Lista de partidos de la ronda
     private ArrayList<Partido> partidos;
 
-    public Ronda(int id, String nro, ArrayList<Partido> partidos) {
+    public Ronda(int id, String nro, ArrayList<Partido> partidos) throws RondaException{
 
         if (id <= 0) {
-            // lanzar una excepcion
+            throw new RondaException("El id no puede ser un numero cero o menor a cero");
         }
 
-        if (Integer.parseInt(nro) <= 0 || nro.isEmpty()) {
-            // lanzar una excepcion
+        if (nro.isEmpty()) {
+            throw new RondaException("El nro no puede estar vacio");
         }
 
         if (partidos == null) {
-            // lanzar una excepcion
+            throw new RondaException("La lista de partidos no puede ser nula");
         }
 
         this.id = id;
