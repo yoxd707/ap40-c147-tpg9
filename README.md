@@ -70,3 +70,4 @@ TODO: Agregar como se debe utilizar el programa.
 - [Opencsv](https://opencsv.sourceforge.net/) - Opencsv 5.7.1
 - [Lombok](https://projectlombok.org/) - Lombok 1.18.26
 - [JUnit](https://junit.org/junit5/) - JUnit Jupiter 5.5.2
+- [MySQL Connector](https://mvnrepository.com/artifact/mysql/mysql-connector-java) - MySQL Connector Java 8.0.32
