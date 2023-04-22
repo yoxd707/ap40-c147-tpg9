@@ -13,13 +13,13 @@ public class PartidoTest {
     @Test
     public void constructor_deberiaSerCorrecto() {
         Assertions.assertDoesNotThrow(
-            () -> new Partido(1, new Equipo(), new Equipo(), 0, 0)
+            () -> new Partido(1, new Equipo(0, "eq1", ""), new Equipo(1, "eq2", ""), 0, 0)
         );
     }
 
     @Test
     public void constructor_pasandoEquiposIguales_deberiaLanzarExcepcion() {
-        var equipo = new Equipo();
+        var equipo = new Equipo(0, "eq1", "");
         Assertions.assertThrows(
             IllegalArgumentException.class,
             () -> new Partido(1, equipo, equipo, 0, 0)
@@ -30,7 +30,7 @@ public class PartidoTest {
     public void constructor_pasandoEquipo1Nulo_deberiaLanzarExcepcion() {
         Assertions.assertThrows(
             NullPointerException.class,
-            () -> new Partido(1, null, new Equipo(), 0, 0)
+            () -> new Partido(1, null, new Equipo(0, "eq1", ""), 0, 0)
         );
     }
 
@@ -38,7 +38,7 @@ public class PartidoTest {
     public void constructor_pasandoEquipo2Nulo_deberiaLanzarExcepcion() {
         Assertions.assertThrows(
             NullPointerException.class,
-            () -> new Partido(1, new Equipo(), null, 0, 0)
+            () -> new Partido(1, new Equipo(0, "eq1", ""), null, 0, 0)
         );
     }
 
@@ -46,7 +46,7 @@ public class PartidoTest {
     public void constructor_pasandoGolesEquipo1Negativo_deberiaLanzarExcepcion() {
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> new Partido(1, new Equipo(), new Equipo(), -1, 0)
+            () -> new Partido(1, new Equipo(0, "eq1", ""), new Equipo(0, "eq2", ""), -1, 0)
         );
     }
 
@@ -54,15 +54,15 @@ public class PartidoTest {
     public void constructor_pasandoGolesEquipo2Negativo_deberiaLanzarExcepcion() {
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> new Partido(1, new Equipo(), new Equipo(), 0, -1)
+            () -> new Partido(1, new Equipo(0, "eq1", ""), new Equipo(0, "eq2", ""), 0, -1)
         );
     }
 
     @Test
     public void propiedades_deberianSerCorrectas() {
         var id = 1;
-        var equipo1 = new Equipo();
-        var equipo2 = new Equipo();
+        var equipo1 = new Equipo(0, "eq1", "");
+        var equipo2 = new Equipo(1, "eq2", "");
         var golesEquipo1 = 2;
         var golesEquipo2 = 3;
 

@@ -14,8 +14,8 @@ public class PartidoResultadoTest {
 
     @Test
     public void deberiaSerEmpate() {
-        var equipo1 = new Equipo();
-        var equipo2 = new Equipo();
+        var equipo1 = new Equipo(0, "eq1", "");
+        var equipo2 = new Equipo(1, "eq2", "");
         var partido = new Partido(1, equipo1, equipo2, 0, 0);
 
         var resultadoEquipo1 = partido.resultado(equipo1);
@@ -27,8 +27,8 @@ public class PartidoResultadoTest {
 
     @Test
     public void equipo1_deberiaSerGanador_equipo2_deberiaSerPerdedor() {
-        var equipo1 = new Equipo();
-        var equipo2 = new Equipo();
+        var equipo1 = new Equipo(0, "eq1", "");
+        var equipo2 = new Equipo(1, "eq2", "");
         var partido = new Partido(1, equipo1, equipo2, 1, 0);
 
         var resultadoEquipo1 = partido.resultado(equipo1);
@@ -40,8 +40,8 @@ public class PartidoResultadoTest {
 
     @Test
     public void equipo1_deberiaSerPerdedor_equipo2_deberiaSerGanador() {
-        var equipo1 = new Equipo();
-        var equipo2 = new Equipo();
+        var equipo1 = new Equipo(0, "eq1", "");
+        var equipo2 = new Equipo(1, "eq2", "");
         var partido = new Partido(1, equipo1, equipo2, 0, 1);
 
         var resultadoEquipo1 = partido.resultado(equipo1);
@@ -53,9 +53,9 @@ public class PartidoResultadoTest {
 
     @Test
     public void pasandoEquipoNoPerteneciente_deberiaLanzarExcepcion() {
-        var equipo1 = new Equipo();
-        var equipo2 = new Equipo();
-        var equipo3 = new Equipo();
+        var equipo1 = new Equipo(0, "eq1", "");
+        var equipo2 = new Equipo(1, "eq2", "");
+        var equipo3 = new Equipo(2, "eq3", "");
         var partido = new Partido(1, equipo1, equipo2, 0, 0);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> partido.resultado(equipo3));
@@ -63,8 +63,8 @@ public class PartidoResultadoTest {
 
     @Test
     public void pasandoEquipoNulo_deberiaLanzarExcepcion() {
-        var equipo1 = new Equipo();
-        var equipo2 = new Equipo();
+        var equipo1 = new Equipo(0, "eq1", "");
+        var equipo2 = new Equipo(1, "eq2", "");
         var partido = new Partido(1, equipo1, equipo2, 0, 0);
 
         Assertions.assertThrows(NullPointerException.class, () -> partido.resultado(null));
