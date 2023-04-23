@@ -6,6 +6,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -15,11 +16,11 @@ import java.util.Map;
  */
 public class ParticipanteDAOCsv implements ParticipanteDAO {
 
-    private static final String RUTA_ARCHIVO_CSV = "ap40-c147-tpg9/src/main/resources/pronosticos.csv";
+    private static final String RUTA_ARCHIVO_CSV = Paths.get(System.getProperty("user.dir")) + "/src/main/resources/pronosticos.csv";
 
     @Override
-    public Map<Integer,Participante> select() {
-        Map<Integer,Participante> participantes = new LinkedHashMap<>();
+    public Map<Integer, Participante> select() {
+        Map<Integer, Participante> participantes = new LinkedHashMap<>();
         FileReader fileReader = null;
         try {
             fileReader = new FileReader(RUTA_ARCHIVO_CSV);
@@ -29,7 +30,7 @@ public class ParticipanteDAOCsv implements ParticipanteDAO {
             csvReader.skip(1);
 
             String[] linea;
-            
+
             while ((linea = csvReader.readNext()) != null) {
                 int idParticipante = Integer.parseInt(linea[1]);
                 String nombreParticipante = linea[2];
