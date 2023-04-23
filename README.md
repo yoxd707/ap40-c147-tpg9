@@ -48,8 +48,8 @@ En este trabajo práctico nos limitaremos a pronosticar los resultados de los pa
 
 ## 😎 Integrantes <a id="members"></a>
 
-<!-- TODO: Agregar a los integrantes del grupo. -->
-...
+- David Gabriel davidg2642@gmail.com
+- Castaño Ulises ulises27.000@gmail.com
 
 <!--
 ---
