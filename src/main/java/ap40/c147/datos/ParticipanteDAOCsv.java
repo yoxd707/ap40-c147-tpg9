@@ -32,8 +32,8 @@ public class ParticipanteDAOCsv implements ParticipanteDAO {
             String[] linea;
 
             while ((linea = csvReader.readNext()) != null) {
-                int idParticipante = Integer.parseInt(linea[1]);
-                String nombreParticipante = linea[2];
+                int idParticipante = Integer.parseInt(linea[2]);
+                String nombreParticipante = linea[3];
                 Participante participante = new Participante(idParticipante, nombreParticipante);
                 participantes.put(idParticipante, participante);
             }
