@@ -3,7 +3,7 @@ package ap40.c147.tpg9;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import lombok.var;
+
 
 /** Pruebas unitarias para los métodos {@code equals} de la clase {@code Partido}
  * @author Castaño Ulises.
