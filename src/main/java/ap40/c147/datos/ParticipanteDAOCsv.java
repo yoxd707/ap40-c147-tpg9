@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * @author david
  */
-public class ParticipanteDAOCsv implements ParticipanteDao {
+public class ParticipanteDAOCsv implements ParticipanteDAO {
 
     private static final String RUTA_ARCHIVO_CSV = "ap40-c147-tpg9/src/main/resources/pronosticos.csv";
 

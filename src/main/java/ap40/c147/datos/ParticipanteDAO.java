@@ -7,6 +7,6 @@ import java.util.Map;
  *
  * @author david
  */
-public interface ParticipanteDao {
+public interface ParticipanteDAO {
     public Map<Integer,Participante> select();
 }
