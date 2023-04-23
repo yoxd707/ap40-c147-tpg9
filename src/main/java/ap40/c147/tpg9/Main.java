@@ -6,14 +6,14 @@ import ap40.c147.db.DbManager;
 import java.io.FileReader;
 import java.util.List;
 import com.opencsv.bean.CsvToBeanBuilder;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Map;
 
 public class Main {
 
     public static void main(String[] args) {
-        
+
+        listarParticipantes();
+
         try {
             String archivoDeConfiguracion = args[0];
 
@@ -38,6 +38,21 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void listarParticipantes() {
+
+        ParticipanteDAO participanteDAO = new ParticipanteDAOCsv();
+
+        Map<Integer, Participante> participantes = participanteDAO.select();
+
+        System.out.println("Listado de participantes: \n");
+        participantes.forEach((id, participante) -> {
+            System.out.println("Participante nro: " + id);
+            System.out.println("Id: " + id);
+            System.out.println("Nombre: " + participante.getNombre() + "\n");
+        });
+
     }
 
 }
