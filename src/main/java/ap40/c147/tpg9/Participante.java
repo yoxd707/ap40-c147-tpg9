@@ -13,6 +13,7 @@ public class Participante {
 
     private int id;
     private String nombre;
+    private int puntos;
 
     public Participante(int id, String nombre) {
         this.id = id;
