@@ -1,7 +1,7 @@
 package ap40.c147.tpg9;
 
 import ap40.c147.exceptions.RondaException;
-import java.util.ArrayList;
+import java.util.Map;
 import lombok.Getter;
 
 /**
@@ -17,7 +17,7 @@ public class Ronda {
     // Numero de la ronda
     private String nro;
     // Lista de partidos de la ronda
-    private ArrayList<Partido> partidos;
+    private Map<Integer, Partido> partidos;
 
     /**
      *
@@ -30,7 +30,7 @@ public class Ronda {
      * @throws ap40.c147.exceptions.RondaException si alguno de los argumentos
      * es nulo o invalido
      */
-    public Ronda(int id, String nro, ArrayList<Partido> partidos) throws RondaException {
+    public Ronda(int id, String nro, Map<Integer, Partido> partidos) throws RondaException {
 
         if (id <= 0) {
             throw new RondaException("El id no puede ser un numero cero o menor a cero");
@@ -66,14 +66,7 @@ public class Ronda {
             throw new RondaException("El id no puede ser un numero cero o menor a cero");
         }
 
-        Partido partidoBuscado = null;
-
-        for (Partido partido : partidos) {
-            if (partido.getId() == partidoId) {
-                partidoBuscado = partido;
-                break;
-            }
-        }
+        Partido partidoBuscado = this.partidos.get(partidoId);
 
         return partidoBuscado;
 

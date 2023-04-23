@@ -38,7 +38,7 @@ public class RondaTest {
 
         Equipo equipo1 = new Equipo(0, "eq1", "");
         Equipo equipo2 = new Equipo(1, "eq2", "");
-        Partido partido = new Partido(1, equipo1, equipo2, 2, 0);
+        Partido partido = new Partido(1,1, equipo1, equipo2, 2, 0);
 
         ArrayList<Partido> partidos = new ArrayList<>();
 
@@ -56,7 +56,7 @@ public class RondaTest {
     public void obtenerPartidoNoEncuentraPartido() throws Exception {
         Equipo equipo1 = new Equipo(0, "eq1", "");
         Equipo equipo2 = new Equipo(1, "eq2", "");
-        Partido partido = new Partido(1, equipo1, equipo2, 2, 1);
+        Partido partido = new Partido(1,1, equipo1, equipo2, 2, 1);
 
         ArrayList<Partido> partidos = new ArrayList<>();
         partidos.add(partido);
@@ -70,7 +70,7 @@ public class RondaTest {
     public void obtenerPartidoArgumentoInvalido() throws RondaException {
         Equipo equipo1 = new Equipo(0, "eq1", "");
         Equipo equipo2 = new Equipo(1, "eq2", "");
-        Partido partido = new Partido(1, equipo1, equipo2, 2, 1);
+        Partido partido = new Partido(1,1, equipo1, equipo2, 2, 1);
 
         ArrayList<Partido> partidos = new ArrayList<>();
         partidos.add(partido);

@@ -13,7 +13,7 @@ public class PartidoTest {
     @Test
     public void constructor_deberiaSerCorrecto() {
         Assertions.assertDoesNotThrow(
-            () -> new Partido(1, new Equipo(0, "eq1", ""), new Equipo(1, "eq2", ""), 0, 0)
+            () -> new Partido(1, 1,new Equipo(0, "eq1", ""), new Equipo(1, "eq2", ""), 0, 0)
         );
     }
 
@@ -22,7 +22,7 @@ public class PartidoTest {
         var equipo = new Equipo(0, "eq1", "");
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> new Partido(1, equipo, equipo, 0, 0)
+            () -> new Partido(1, 1,equipo, equipo, 0, 0)
         );
     }
 
@@ -30,7 +30,7 @@ public class PartidoTest {
     public void constructor_pasandoEquipo1Nulo_deberiaLanzarExcepcion() {
         Assertions.assertThrows(
             NullPointerException.class,
-            () -> new Partido(1, null, new Equipo(0, "eq1", ""), 0, 0)
+            () -> new Partido(1, 1,null, new Equipo(0, "eq1", ""), 0, 0)
         );
     }
 
@@ -38,7 +38,7 @@ public class PartidoTest {
     public void constructor_pasandoEquipo2Nulo_deberiaLanzarExcepcion() {
         Assertions.assertThrows(
             NullPointerException.class,
-            () -> new Partido(1, new Equipo(0, "eq1", ""), null, 0, 0)
+            () -> new Partido(1, 1,new Equipo(0, "eq1", ""), null, 0, 0)
         );
     }
 
@@ -46,7 +46,7 @@ public class PartidoTest {
     public void constructor_pasandoGolesEquipo1Negativo_deberiaLanzarExcepcion() {
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> new Partido(1, new Equipo(0, "eq1", ""), new Equipo(0, "eq2", ""), -1, 0)
+            () -> new Partido(1, 1,new Equipo(0, "eq1", ""), new Equipo(0, "eq2", ""), -1, 0)
         );
     }
 
@@ -54,7 +54,7 @@ public class PartidoTest {
     public void constructor_pasandoGolesEquipo2Negativo_deberiaLanzarExcepcion() {
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> new Partido(1, new Equipo(0, "eq1", ""), new Equipo(0, "eq2", ""), 0, -1)
+            () -> new Partido(1, 1,new Equipo(0, "eq1", ""), new Equipo(0, "eq2", ""), 0, -1)
         );
     }
 
@@ -66,7 +66,7 @@ public class PartidoTest {
         var golesEquipo1 = 2;
         var golesEquipo2 = 3;
 
-        var partido = new Partido(id, equipo1, equipo2, golesEquipo1, golesEquipo2);
+        var partido = new Partido(id, 1,equipo1, equipo2, golesEquipo1, golesEquipo2);
 
         Assertions.assertEquals(id, partido.getId());
         Assertions.assertEquals(equipo1, partido.getEquipo1());
