@@ -46,6 +46,7 @@ public class RondaDAOCsv implements RondaDAO {
                         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
                 ronda = new Ronda(idRonda, nroRonda, partidosRonda);
+                rondas.put(idRonda, ronda);
             }
 
         } catch (FileNotFoundException ex) {
