@@ -4,6 +4,10 @@ import ap40.c147.datos.EquipoDAO;
 import ap40.c147.datos.EquipoDAOCsv;
 import ap40.c147.datos.ParticipanteDAO;
 import ap40.c147.datos.ParticipanteDAOCsv;
+import ap40.c147.datos.PartidoDAO;
+import ap40.c147.datos.PartidoDAOCsv;
+import ap40.c147.datos.RondaDAO;
+import ap40.c147.datos.RondaDAOCsv;
 import ap40.c147.db.DbManager;
 import java.io.FileReader;
 import java.util.List;
@@ -15,8 +19,10 @@ public class Main {
     public static void main(String[] args) {
 
         listarParticipantes();
-        
-        listarEquipos();
+
+        Map<Integer, Equipo> equipos = listarEquipos();
+
+        listarRondas(equipos);
 
         try {
             String archivoDeConfiguracion = args[0];
@@ -59,7 +65,7 @@ public class Main {
 
     }
 
-    public static void listarEquipos() {
+    public static Map<Integer, Equipo> listarEquipos() {
 
         EquipoDAO equipoDAO = new EquipoDAOCsv();
 
@@ -71,6 +77,28 @@ public class Main {
             System.out.println("-Id: " + id);
             System.out.println("-Nombre: " + equipo.getNombre());
             System.out.println("-Descripcion: " + equipo.getDescripcion() + "\n");
+        });
+
+        return equipos;
+    }
+
+    public static void listarRondas(Map<Integer, Equipo> equipos) {
+
+        PartidoDAO partidoDAO = new PartidoDAOCsv();
+        RondaDAO rondaDAO = new RondaDAOCsv();
+
+        Map<Integer, Partido> partidos = partidoDAO.select(equipos);
+
+        Map<Integer, Ronda> rondas = rondaDAO.select(partidos);
+
+        System.out.println("Listado de Rondas: \n");
+        rondas.forEach((idRonda, ronda) -> {
+            System.out.println("### " + ronda.getNro() + " ###\n");
+            System.out.println("partidos: \n");
+            ronda.getPartidos().forEach((idPartido, partido) -> {
+                System.out.println(" -id: " + idPartido);
+                System.out.println(" -" + partido.getEquipo1().getNombre() + " " + partido.getGolesEquipo1() + " - " + partido.getGolesEquipo2() + " " + partido.getEquipo2().getNombre() + "\n");
+            });
         });
 
     }
