@@ -1,5 +1,7 @@
 package ap40.c147.tpg9;
 
+import ap40.c147.datos.EquipoDAO;
+import ap40.c147.datos.EquipoDAOCsv;
 import ap40.c147.datos.ParticipanteDAO;
 import ap40.c147.datos.ParticipanteDAOCsv;
 import ap40.c147.db.DbManager;
@@ -13,6 +15,8 @@ public class Main {
     public static void main(String[] args) {
 
         listarParticipantes();
+        
+        listarEquipos();
 
         try {
             String archivoDeConfiguracion = args[0];
@@ -49,8 +53,24 @@ public class Main {
         System.out.println("Listado de participantes: \n");
         participantes.forEach((id, participante) -> {
             System.out.println("Participante nro: " + id);
-            System.out.println("Id: " + id);
-            System.out.println("Nombre: " + participante.getNombre() + "\n");
+            System.out.println("-Id: " + id);
+            System.out.println("-Nombre: " + participante.getNombre() + "\n");
+        });
+
+    }
+
+    public static void listarEquipos() {
+
+        EquipoDAO equipoDAO = new EquipoDAOCsv();
+
+        Map<Integer, Equipo> equipos = equipoDAO.select();
+
+        System.out.println("Listado de equipos: \n");
+        equipos.forEach((id, equipo) -> {
+            System.out.println("Equipo nro: " + id);
+            System.out.println("-Id: " + id);
+            System.out.println("-Nombre: " + equipo.getNombre());
+            System.out.println("-Descripcion: " + equipo.getDescripcion() + "\n");
         });
 
     }

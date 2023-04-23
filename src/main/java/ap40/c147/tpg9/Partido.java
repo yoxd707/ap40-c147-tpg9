@@ -13,6 +13,8 @@ public class Partido {
 
     /** Identificador único del partido. */
     @Getter private int id;
+    /** id de la ronda **/
+    @Getter private int idRonda;
     /** Equipo 1 */
     @Getter private Equipo equipo1;
     /** Equipo 2 */
@@ -37,7 +39,7 @@ public class Partido {
      *          </ul>
      * @see Equipo
      */
-    public Partido(int id, @NonNull Equipo equipo1, @NonNull Equipo equipo2, int golesEquipo1, int golesEquipo2) throws IllegalArgumentException, NullPointerException {
+    public Partido(int id, @NonNull int idRonda,@NonNull Equipo equipo1, @NonNull Equipo equipo2, int golesEquipo1, int golesEquipo2) throws IllegalArgumentException, NullPointerException {
         if (equipo1.equals(equipo2))
             throw new IllegalArgumentException("Los parámetros equipo1 y equipo2 no pueden ser iguales o la misma instancia.");
 
@@ -45,6 +47,7 @@ public class Partido {
             throw new IllegalArgumentException("Los parámetros golesEquipo1 y golesEquipo2 no pueden ser menor a cero.");
 
         this.id = id;
+        this.idRonda = idRonda;
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
         this.golesEquipo1 = golesEquipo1;
