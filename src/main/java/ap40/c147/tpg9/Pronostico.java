@@ -18,23 +18,25 @@ public class Pronostico {
     private Equipo equipo;
     private ResultadoEnum resultadoPronosticado;
     private ResultadoEnum resultado;
-
-    public Pronostico(int id, int rondaId, Participante participante, Partido partido, Equipo equipo, ResultadoEnum resultadoPronosticado, ResultadoEnum resultado) {
+    
+    public Pronostico(int id, int rondaId, Participante participante, Partido partido, Equipo equipo, ResultadoEnum resultadoPronosticado) {
         this.id = id;
         this.rondaId = rondaId;
         this.participante = participante;
         this.partido = partido;
         this.equipo = equipo;
         this.resultadoPronosticado = resultadoPronosticado;
-        this.resultado = resultado;
+        this.resultado = this.partido.resultado(this.equipo) == this.resultadoPronosticado ? ResultadoEnum.GANADOR : ResultadoEnum.PERDEDOR;
     }
     
-    
-    public void asignarPuntosParticipante(){
+    public void asignarPuntosParticipante() {
         
-        // implementar
+        int puntos = this.participante.getPuntos();
+        
+        if (this.resultado == ResultadoEnum.GANADOR) {
+            this.participante.setPuntos(++puntos);
+        }
         
     }
-    
     
 }
