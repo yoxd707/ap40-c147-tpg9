@@ -18,5 +18,10 @@ public class Participante {
         this.id = id;
         this.nombre = nombre;
     }
+
+    @Override
+    public String toString() {
+        return "Participante{" + "id=" + id + ", nombre=" + nombre + '}';
+    }
     
 }
