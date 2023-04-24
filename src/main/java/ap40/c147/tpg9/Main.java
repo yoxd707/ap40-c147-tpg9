@@ -28,6 +28,8 @@ public class Main {
 
         listarPronosticos(participantes, equipos);
 
+        listarResultadosDePronosticos(participantes);
+
         try {
             String archivoDeConfiguracion = args[0];
 
@@ -127,6 +129,15 @@ public class Main {
             System.out.println("-Aposto por: " + (pronostico.getResultadoPronosticado() == ResultadoEnum.EMPATE ? ResultadoEnum.EMPATE : pronostico.getEquipo().getNombre()));
             System.out.println("-Resultado: " + pronostico.getResultado() + "\n");
             pronostico.asignarPuntosParticipante();
+        });
+
+    }
+
+    public static void listarResultadosDePronosticos(Map<Integer, Participante> participantes) {
+
+        System.out.println("Listado de puntos: \n");
+        participantes.forEach((id, participante) -> {
+            System.out.println(" -El/La participante " + participante.getNombre() + " a consegido un total de " + participante.getPuntos() + " puntos\n");
         });
 
     }
