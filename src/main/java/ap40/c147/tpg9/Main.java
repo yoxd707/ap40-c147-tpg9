@@ -6,6 +6,8 @@ import ap40.c147.datos.ParticipanteDAO;
 import ap40.c147.datos.ParticipanteDAOCsv;
 import ap40.c147.datos.PartidoDAO;
 import ap40.c147.datos.PartidoDAOCsv;
+import ap40.c147.datos.PronosticoDAO;
+import ap40.c147.datos.PronosticoDAOCsv;
 import ap40.c147.datos.RondaDAO;
 import ap40.c147.datos.RondaDAOCsv;
 import ap40.c147.db.DbManager;
@@ -18,11 +20,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        listarParticipantes();
+        Map<Integer, Participante> participantes = listarParticipantes();
 
         Map<Integer, Equipo> equipos = listarEquipos();
 
         listarRondas(equipos);
+
+        listarPronosticos(participantes, equipos);
 
         try {
             String archivoDeConfiguracion = args[0];
@@ -50,7 +54,7 @@ public class Main {
         }
     }
 
-    public static void listarParticipantes() {
+    public static Map<Integer, Participante> listarParticipantes() {
 
         ParticipanteDAO participanteDAO = new ParticipanteDAOCsv();
 
@@ -62,6 +66,8 @@ public class Main {
             System.out.println("-Id: " + id);
             System.out.println("-Nombre: " + participante.getNombre() + "\n");
         });
+
+        return participantes;
 
     }
 
@@ -99,6 +105,28 @@ public class Main {
                 System.out.println(" -id: " + idPartido);
                 System.out.println(" -" + partido.getEquipo1().getNombre() + " " + partido.getGolesEquipo1() + " - " + partido.getGolesEquipo2() + " " + partido.getEquipo2().getNombre() + "\n");
             });
+        });
+
+    }
+
+    public static void listarPronosticos(Map<Integer, Participante> participantes, Map<Integer, Equipo> equipos) {
+
+        PronosticoDAO pronosticoDAO = new PronosticoDAOCsv();
+
+        PartidoDAO partidoDAO = new PartidoDAOCsv();
+
+        Map<Integer, Partido> partidos = partidoDAO.select(equipos);
+
+        Map<Integer, Pronostico> pronosticos = pronosticoDAO.select(participantes, partidos);
+
+        System.out.println("Listado de pronosticos: \n");
+        pronosticos.forEach((id, pronostico) -> {
+            System.out.println("Pronostico nro: " + id);
+            System.out.println("-Participante: " + pronostico.getParticipante().getNombre());
+            System.out.println("-Partido: " + pronostico.getPartido().getEquipo1().getNombre() + " vs " + pronostico.getPartido().getEquipo2().getNombre());
+            System.out.println("-Aposto por: " + (pronostico.getResultadoPronosticado() == ResultadoEnum.EMPATE ? ResultadoEnum.EMPATE : pronostico.getEquipo().getNombre()));
+            System.out.println("-Resultado: " + pronostico.getResultado() + "\n");
+            pronostico.asignarPuntosParticipante();
         });
 
     }
