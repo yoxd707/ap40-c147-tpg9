@@ -1,5 +1,7 @@
 package ap40.c147.datos;
 
+import ap40.c147.tpg9.Participante;
+import ap40.c147.tpg9.Partido;
 import ap40.c147.tpg9.Pronostico;
 import java.util.Map;
 
@@ -9,7 +11,7 @@ import java.util.Map;
  */
 public interface PronosticoDAO {
 
-    public Map<Integer, Pronostico> select();
+    public Map<Integer, Pronostico> select(Map<Integer, Participante> participantes, Map<Integer, Partido> partidos);
 
     public int insert(Pronostico pronostico);
 
